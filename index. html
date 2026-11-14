@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JNEWTECHS | Technology Intelligence</title>
+
+<style>
+:root {
+  --bg: #f4f7fc;
+  --card: #ffffff;
+  --text: #17233d;
+  --muted: #718096;
+  --blue: #2563eb;
+  --dark: #102044;
+  --border: #e5eaf3;
+  --green: #16a36a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 245px;
+  background: var(--dark);
+  color: white;
+  padding: 25px 15px;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 23px;
+  font-weight: bold;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+}
+
+.brand span {
+  color: #60a5fa;
+}
+
+.tagline {
+  color: #a9b8d3;
+  font-size: 11px;
+  padding: 0 12px;
+  margin-bottom: 35px;
+}
+
+.nav-title {
+  color: #91a4c5;
+  font-size: 11px;
+  padding: 0 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.nav-btn {
+  width: 100%;
+  border: 0;
+  color: #dce6f7;
+  background: transparent;
+  padding: 13px 12px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #24416f;
+  color: white;
+}
+
+.sidebar-footer {
+  margin: 35px 12px 0;
+  color: #a9b8d3;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.topbar h2 {
+  font-size: 20px;
+}
+
+.topbar p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.badge {
+  background: #eaf2ff;
+  color: var(--blue);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 25px;
+  max-width: 1450px;
+  margin: auto;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.welcome {
+  background: linear-gradient(120deg, #153b78, #2563eb);
+  color: white;
+  padding: 28px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
+.welcome h1 {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  color: #e1eaff;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px rgba(20, 40, 80, 0.03);
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.stat-number {
+  font-size: 27px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.stat-note {
+  font-size: 11px;
+  color: var(--green);
+}
+
+.section-heading {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.chart {
+  width: 100%;
+  min-height: 250px;
+  display: block;
+}
+
+.chart-label {
+  font-size: 12px;
+  fill: #718096;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background: var(--blue);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+
+th, td {
+  text-align: left;
+  padding: 13px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+th {
+  color: var(--muted);
+  background: #f8faff;
+}
+
+input, select {
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--text);
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--blue);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: .9;
+}
+
+.btn.secondary {
+  background: #eaf2ff;
+  color: var(--blue);
+}
+
+.info-box {
+  background: #edf4ff;
+  border-left: 4px solid var(--blue);
+  padding: 15px;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 15px;
+}
+
+.career {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 17px;
+  margin-bottom: 12px;
+}
+
+.career h3 {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.career p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+  font-size: 12px;
+}
+
+.empty {
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media(max-width: 950px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 650px) {
+  .layout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .brand {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .tagline, .nav-title, .sidebar-footer {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  .nav-btn {
+    width: auto;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .topbar {
+    padding: 15px;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .welcome {
+    padding: 20px;
+  }
+
+  .welcome h1 {
+    font-size: 22px;
+  }
+
+  .grid {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .stat-number {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <div class="brand">JNEW<span>TECHS</span></div>
+
+    <div class="tagline">
+      TECHNOLOGY INTELLIGENCE DASHBOARD
+    </div>
+
+    <div class="nav-title">MAIN MENU</div>
+
+    <nav class="nav-list">
+
+      <button class="nav-btn active" data-page="overview">
+        Overview
+      </button>
+
+      <button class="nav-btn" data-page="trends">
+        Tech Trends
+      </button>
+
+      <button class="nav-btn" data-page="ai">
+        AI Adoption
+      </button>
+
+      <button class="nav-btn" data-page="skills">
+        Skills Analytics
+      </button>
+
+      <button class="nav-btn" data-page="careers">
+        Career Insights
+      </button>
+
+      <button class="nav-btn" data-page="about">
+        About Project
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      JNEWTECHS<br>
+      Technology and Skills Intelligence<br>
+      Version 1.0
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div>
+        <h2 id="pageTitle">Dashboard Overview</h2>
+        <p>Technology Trends and Skills Intelligence</p>
+      </div>
+
+      <div class="badge">● Demo Dashboard</div>
+
+    </header>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+
+      <section class="page active" id="overview">
+
+        <div class="welcome">
+
+          <h1>Welcome to JNEWTECHS</h1>
+
+          <p>
+            Explore technology trends, artificial intelligence,
+            programming skills and career opportunities through
+            interactive data visualizations.
+          </p>
+
+        </div>
+
+        <div class="grid">
+
+          <div class="card">
+            <div class="stat-label">Technology Categories</div>
+            <div class="stat-number">06</div>
+            <div class="stat-note">Dashboard categories</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">Programming Languages</div>
+            <div class="stat-number">06</div>
+            <div class="stat-note">Skills represented</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">AI Applications</div>
+            <div class="stat-number">05</div>
+            <div class="stat-note">Areas represented</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">Career Paths</div>
+            <div class="stat-number">05</div>
+            <div class="stat-note">Career examples</div>
+          </div>
+
+        </div>
+
+        <div class="two-columns">
+
+          <div class="card">
+
+            <h3 class="section-heading">
+              Programming Skills
+            </h3>
+
+            <svg id="overviewSkills" class="chart"
+                 viewBox="0 0 500 270"></svg>
+
+          </div>
+
+          <div class="card">
+
+            <h3 class="section-heading">
+              Technology Categories
+            </h3>
+
+            <svg id="overviewTech" class="chart"
+                 viewBox="0 0 500 270"></svg>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Project Purpose
+          </h3>
+
+          <p style="font-size:14px;line-height:1.8;color:#718096">
+            JNEWTECHS is an educational technology intelligence
+            dashboard designed to demonstrate how data can be
+            organized and visualized to understand technology,
+            digital skills and career opportunities.
+          </p>
+
+          <div class="info-box">
+            Note: Figures displayed in this version are illustrative
+            sample data created for demonstration and learning.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TECHNOLOGY TRENDS -->
+
+      <section class="page" id="trends">
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Technology Trends Analysis
+          </h3>
+
+          <p style="color:#718096;font-size:13px;margin-bottom:15px">
+            Illustrative technology interest index.
+          </p>
+
+          <svg id="trendChart" class="chart"
+               viewBox="0 0 700 300"></svg>
+
+          <div class="legend">
+            <span><i class="dot"></i> Technology interest index</span>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Technology Categories
+          </h3>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Example</th>
+                  <th>Application</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Artificial Intelligence</td>
+                  <td>Machine Learning</td>
+                  <td>Prediction and automation</td>
+                </tr>
+
+                <tr>
+                  <td>Cloud Computing</td>
+                  <td>Cloud Storage</td>
+                  <td>Online infrastructure</td>
+                </tr>
+
+                <tr>
+                  <td>Cybersecurity</td>
+                  <td>Network Security</td>
+                  <td>Digital protection</td>
+                </tr>
+
+                <tr>
+                  <td>Data Science</td>
+                  <td>Data Analytics</td>
+                  <td>Decision support</td>
+                </tr>
+
+                <tr>
+                  <td>Web Development</td>
+                  <td>HTML and JavaScript</td>
+                  <td>Website development</td>
+                </tr>
+
+                <tr>
+                  <td>Mobile Development</td>
+                  <td>Android Apps</td>
+                  <td>Mobile applications</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- AI ADOPTION -->
+
+      <section class="page" id="ai">
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Artificial Intelligence Applications
+          </h3>
+
+          <p style="font-size:13px;color:#718096;margin-bottom:15px">
+            Illustrative distribution of AI application categories.
+          </p>
+
+          <svg id="aiChart" class="chart"
+               viewBox="0 0 600 300"></svg>
+
+          <div class="legend">
+            <span><i class="dot"></i> AI application categories</span>
+          </div>
+
+        </div>
+
+        <div class="grid">
+
+          <div class="card">
+            <div class="stat-label">Machine Learning</div>
+            <div class="stat-number">30%</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">Natural Language</div>
+            <div class="stat-number">25%</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">Computer Vision</div>
+            <div class="stat-number">20%</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-label">Other Applications</div>
+            <div class="stat-number">25%</div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SKILLS ANALYTICS -->
+
+      <section class="page" id="skills">
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Programming Skills Analytics
+          </h3>
+
+          <div class="controls">
+
+            <input
+              type="text"
+              id="skillSearch"
+              placeholder="Search a programming language..."
+            >
+
+            <button class="btn" id="exportSkills">
+              Export CSV
+            </button>
+
+          </div>
+
+          <svg id="skillsChart" class="chart"
+               viewBox="0 0 650 320"></svg>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">
+            Skills Data Table
+          </h3>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Language</th>
+                  <th>Illustrative Index</th>
+                  <th>Common Application</th>
+                </tr>
+              </thead>
+
+              <tbody id="skillsTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CAREER INSIGHTS -->
+
+      <section class="page" id="careers">
+
+        <div class="welcome">
+
+          <h1>Technology Career Insights</h1>
+
+          <p>
+            Discover different career paths in the technology
+            industry and the skills associated with them.
+          </p>
+
+        </div>
+
+        <div class="career">
+          <h3>1. Data Analyst</h3>
+          <p>
+            Works with data to identify patterns, prepare reports
+            and support better decisions. Useful skills include
+            Excel, SQL, Python and data visualization.
+          </p>
+        </div>
+
+        <div class="career">
+          <h3>2. Software Developer</h3>
+          <p>
+            Designs and develops software applications.
+            Useful skills include programming, problem-solving,
+            debugging and software development tools.
+          </p>
+        </div>
+
+        <div class="career">
+          <h3>3. Artificial Intelligence Engineer</h3>
+          <p>
+            Works with intelligent computer systems and machine
+            learning models. Useful skills include Python,
+            mathematics and machine learning.
+          </p>
+        </div>
+
+        <div class="career">
+          <h3>4. Cybersecurity Analyst</h3>
+          <p>
+            Helps organizations protect systems, networks
+            and digital information. Useful skills include
+            networking, security principles and risk analysis.
+          </p>
+        </div>
+
+        <div class="career">
+          <h3>5. Cloud Engineer</h3>
+          <p>
+            Works with cloud infrastructure and online computing
+            services. Useful skills include networking,
+            Linux and cloud platforms.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- ABOUT -->
+
+      <section class="page" id="about">
+
+        <div class="welcome">
+
+          <h1>About JNEWTECHS</h1>
+
+          <p>
+            Technology Trends and Skills Intelligence Dashboard.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">Project Overview</h3>
+
+          <p style="font-size:14px;line-height:1.9;color:#718096">
+
+            JNEWTECHS is a technology intelligence dashboard
+            developed to demonstrate the application of data
+            science concepts in technology analysis.
+
+            The project presents sample information through
+            interactive visualizations and organized tables.
+
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">Project Objectives</h3>
+
+          <ul style="padding-left:22px;line-height:2;font-size:14px">
+
+            <li>Explore different technology categories.</li>
+            <li>Present programming skills information.</li>
+            <li>Visualize artificial intelligence applications.</li>
+            <li>Introduce technology career opportunities.</li>
+            <li>Demonstrate data visualization techniques.</li>
+
+          </ul>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">Technologies Used</h3>
+
+          <div class="grid">
+
+            <div class="career">
+              <h3>HTML5</h3>
+              <p>Website structure.</p>
+            </div>
+
+            <div class="career">
+              <h3>CSS3</h3>
+              <p>Website styling and layout.</p>
+            </div>
+
+            <div class="career">
+              <h3>JavaScript</h3>
+              <p>Interactivity and chart generation.</p>
+            </div>
+
+            <div class="career">
+              <h3>Data Science</h3>
+              <p>Data organization and visualization concepts.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3 class="section-heading">Developer</h3>
+
+          <p style="font-size:14px;line-height:1.8">
+            Project Name: JNEWTECHS<br>
+            Project Type: Technology Intelligence Dashboard<br>
+            Version: 1.0
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      © <span id="year"></span> JNEWTECHS.
+      Technology Trends and Skills Intelligence.
+    </footer>
+
+  </main>
+
+</div>
+
+
+<script>
+
+/* SAMPLE DATA */
+
+const skills = [
+  {name:"Python", value:90, application:"Data Science and AI"},
+  {name:"JavaScript", value:85, application:"Web Development"},
+  {name:"Java", value:72, application:"Software Development"},
+  {name:"SQL", value:80, application:"Database Management"},
+  {name:"C++", value:65, application:"Systems Programming"},
+  {name:"R", value:60, application:"Statistical Analysis"}
+];
+
+const technologies = [
+  {name:"AI", value:90},
+  {name:"Cloud", value:80},
+  {name:"Cybersecurity", value:75},
+  {name:"Data Science", value:85},
+  {name:"Web Development", value:78},
+  {name:"Mobile Apps", value:70}
+];
+
+const aiData = [
+  {name:"Machine Learning", value:30},
+  {name:"Natural Language", value:25},
+  {name:"Computer Vision", value:20},
+  {name:"Robotics", value:15},
+  {name:"Other", value:10}
+];
+
+const trends = [35, 42, 39, 55, 50, 62, 58, 70, 76, 73, 85, 90];
+
+
+/* SVG CHART HELPERS */
+
+function barChart(elementId, data, options = {}) {
+
+  const svg = document.getElementById(elementId);
+
+  if (!svg) return;
+
+  const width = options.width || 500;
+  const height = options.height || 270;
+  const left = 125;
+  const right = 25;
+  const top = 20;
+  const row = 35;
+  const max = options.max || 100;
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+  let html = "";
+
+  data.forEach((item, index) => {
+
+    const y = top + index * row;
+    const barWidth = (item.value / max) * (width - left - right);
+
+    html += `
+      <text x="5" y="${y + 16}" class="chart-label">
+        ${item.name}
+      </text>
+
+      <rect x="${left}" y="${y}"
+        width="${width - left - right}"
+        height="19" rx="5" fill="#edf2f9"/>
+
+      <rect x="${left}" y="${y}"
+        width="${barWidth}" height="19"
+        rx="5" fill="#2563eb"/>
+
+      <text x="${left + barWidth + 7}" y="${y + 15}"
+        class="chart-label">${item.value}</text>
+    `;
+
+  });
+
+  svg.innerHTML = html;
+}
+
+
+function lineChart(elementId, data) {
+
+  const svg = document
